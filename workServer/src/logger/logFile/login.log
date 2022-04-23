@@ -1,0 +1,10 @@
+
+  /* ----------- 2022-03-25 17:42:11------------------------------------------------------------------------------- */
+    {"request":{"method":"GET","url":"/login","header":{"user-agent":"PostmanRuntime/7.29.0","accept":"*/*","postman-token":"b617c155-92ce-4a3d-ac13-e583f201f009","host":"127.0.0.1:3001","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/login","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+  
+  /* ----------- 2022-03-25 17:42:12------------------------------------------------------------------------------- */
+    {"request":{"method":"GET","url":"/login","header":{"user-agent":"PostmanRuntime/7.29.0","accept":"*/*","postman-token":"a87aaaab-16bc-49e6-8131-787f0566d3a9","host":"127.0.0.1:3001","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/login","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+  
+  /* ----------- 2022-03-25 17:42:13------------------------------------------------------------------------------- */
+    {"request":{"method":"GET","url":"/login","header":{"user-agent":"PostmanRuntime/7.29.0","accept":"*/*","postman-token":"9a2559c8-3ac3-4628-aab0-7e9d9b5ab61e","host":"127.0.0.1:3001","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/login","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+  
