@@ -36,7 +36,7 @@
 
 <script>
 import Tinymce from "@/components/Tinymce/index";
-import { getAllClassification, addCase } from "@/axios/api";
+import { getAllClassification, addCase } from "@/axios/api";  //
 import { mapState } from "vuex";
 export default {
   components: {
@@ -115,15 +115,28 @@ export default {
       try {
         console.log("content", this.value);
         this.validate().then(async () => {
+          const opt = this.options
+          console.log('opt', opt)
+          const compile_id = this.value[0], branchCompile_id = this.value[1],chapter_id = this.value[2];
+          let chapter_text= opt.filter(item=> item.value == compile_id )[0].children.filter(itm => itm.value == branchCompile_id)[0].children[0].label
+          let branchCompile_text = opt.filter(item=> item.value == compile_id )[0].children.filter(itm => itm.value == branchCompile_id)[0].label
+          let compile_text = opt.filter(item=> item.value ==compile_id )[0].label
+          // console.log('chapter_text', chapter_text)
+          console.log('branchCompile_text', branchCompile_text)
+          console.log('compile_text', compile_text)
+
           let fd = {
             user_id: this.userInfo.user_id,
             author: this.userInfo.username,
             comments: this.content,
-            compile_id: this.value[0],
-            chapter_id:  this.value[1],
-            branchCompile_id:  this.value[2],
+            compile_id,
+            compile_text,
+            chapter_id,
+            chapter_text,
+            branchCompile_id,
+            branchCompile_text
           };
-
+          console.log('fd', fd)
           const res = await addCase(fd);
           if (res && res.code == 200) {
             this.value = ''

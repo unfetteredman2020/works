@@ -34,6 +34,7 @@
 
 <script>
 import { getClassification, addChapter } from "../../../../axios/api";
+
 import { mapState } from "vuex";
 export default {
   components: {},
@@ -73,12 +74,21 @@ export default {
   methods: {
     async addChapter() {
       try {
+        console.log('this.options', this.options)
+        const opt = this.options
+        const compile_id =  this.numberValidateForm.menuId[0];
+        const branchCompile_id  = this.numberValidateForm.menuId[1]
+        let compile_text = opt.filter(item=> compile_id == item.value )[0].label
+        let branchCompile_text =  opt.filter(item=> compile_id == item.value )[0].children.filter(item=> item.value ==branchCompile_id )[0].label
         let params = {
           user_id: this.userInfo.user_id,
-          compile_id: this.numberValidateForm.menuId[0],
-          branchCompile_id: this.numberValidateForm.menuId[1],
-          text: this.numberValidateForm.text
+          compile_id,
+          compile_text,
+          branchCompile_id,
+          branchCompile_text,
+          chapter_text: this.numberValidateForm.text
         };
+        console.log('params', params)
         const res = await addChapter(params);
         console.log("res", res);
         if (res && res.code == 200) {

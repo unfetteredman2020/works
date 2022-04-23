@@ -18,7 +18,7 @@
       </el-popover>
       <ul>
         <li @click="$router.push('/uploadCase')">查法条</li>
-        <li @click="$router.push('/articleList')">案例库</li>
+        <li @click="$router.push('/showLawCase')">案例库</li>
         <li @click="$router.push('/chat')">社区</li>
         <li @click="$router.push('/home/index')">首页</li>
       </ul>
@@ -37,7 +37,7 @@ export default {
         { lable: "资料修改", icon: "el-icon-setting", route: "/setting" },
         { lable: "我的投稿", icon: "el-icon-document", route: "/uploaArticle" },
         { lable: "我的消息", icon: "el-icon-bell", route: "/message" },
-        { lable: "我的收藏", icon: "el-icon-collection", route: "/collection" },
+        { lable: "上传案例", icon: "el-icon-collection", route: "/addLabel" },
         { lable: "标签管理", icon: "el-icon-notebook-2", route: "/label" },
         { lable: "添加法条分类", icon: "el-icon-s-check", route: "/addCaseItems" },
         { lable: "退出登录", icon: "el-icon-switch-button" },

@@ -7,13 +7,13 @@
       label-width="100px"
       class="demo-ruleForm"
     >
-      <el-form-item label="编名称" prop="text">
-        <el-input placeholder="请输入分编名称" maxlength="15" autocomplete="off" v-model="ruleForm.text"></el-input>
+      <el-form-item label="编名称" prop="branchCompile_text">
+        <el-input placeholder="请输入分编名称" maxlength="15" autocomplete="off" v-model="ruleForm.branchCompile_text"></el-input>
       </el-form-item>
       <el-form-item label="编名称" prop="chapter_id">
         <el-select v-model="ruleForm.compile_id" placeholder="请选择编名称">
           <el-option
-            v-for="item in chapterList"
+            v-for="item in compileList"
             :key="item.compile_id"
             :label="item.text"
             :value="item.compile_id"
@@ -33,6 +33,7 @@
 
 <script>
 import { getCompile, addBranchCompile } from "../../../../axios/api";
+
 import { mapState } from "vuex";
 export default {
   components: {},
@@ -40,16 +41,16 @@ export default {
   data() {
     return {
       ruleForm: {
-        text: "",
+        branchCompile_text: "",
         compile_id: ""
       },
       rules: {
-        text: [{ required: true, message: "请输入编名称", trigger: "blur" }],
+        branchCompile_text: [{ required: true, message: "请输入编名称", trigger: "blur" }],
         compile_id: [
           { required: true, message: "请选择编名称", trigger: "change" }
         ]
       },
-      chapterList: []
+      compileList: []
     };
   },
   // 计算属性，会监听依赖属性值随之变化
@@ -68,7 +69,7 @@ export default {
         const res = await getCompile(this.userInfo.user_id);
         console.log("res", res);
         if (res && res.code == 200) {
-          this.chapterList = res.data;
+          this.compileList = res.data;
           this.$message({
             type: "success",
             message: "获取编成功"
@@ -84,8 +85,14 @@ export default {
     },
     async submit() {
       try {
+        console.log("this.", this.compileList);
+        let compile_text = this.compileList.filter(
+          item => item.compile_id == this.ruleForm.compile_id
+        )[0].text;
+        console.log("compile_text", compile_text);
         let params = Object.assign(this.ruleForm, {
-          user_id: this.userInfo.user_id
+          user_id: this.userInfo.user_id,
+          compile_text
         });
         const res = await addBranchCompile(params);
         if (res && res.code == 200) {
@@ -94,6 +101,11 @@ export default {
             message: "添加章成功"
           });
           this.resetForm("ruleForm");
+        } else {
+          this.$message({
+            type: "error",
+            message: "添加章失败"
+          });
         }
       } catch (error) {
         console.log("error", error);
@@ -105,8 +117,10 @@ export default {
     },
     submitForm(formName) {
       console.log("ruleForm", this.ruleForm.compile_id);
-      console.log("this.ch", this.chapterList);
-      let arr = this.chapterList.filter(item => (item.compile_id == this.resetForm.compile_id));
+      console.log("this.ch", this.compileList);
+      let arr = this.compileList.filter(
+        item => item.compile_id == this.resetForm.compile_id
+      );
       console.log("arr", arr);
       this.$refs[formName].validate(valid => {
         if (valid) {

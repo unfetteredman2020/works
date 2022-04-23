@@ -39,6 +39,15 @@ export default new Router({
       path: "/login",
       component: () => import("../view/Login/index.vue"),
     },
+    
+    {
+      path: "/lawCase/detail",
+      component: () => import("../view/ShowLawCase/details.vue"),
+    },
+    {
+      path: "/addLabel",
+      component: () => import("../view/LawCase/index.vue"),
+    },
     {
       path: "/",
       redirect: "/home",
@@ -65,7 +74,7 @@ export default new Router({
         { path: "", redirect: "/Label/addLabel" },
       ],
     },
-    { path: "/articleList", component: () => import("../view/ArticleList/index.vue") },
+    { path: "/showLawCase", component: () => import("../view/ShowLawCase/index.vue") },
     { path: "/articleDetail", component: () => import("../view/ArticleDetail/index.vue") },
     { path: "/chat", component: () => import("../view/Chat/index.vue") },
     // { path: "/uploadCase", component: () => import('../view/UploadCase/index.vue') },

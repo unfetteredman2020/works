@@ -10,10 +10,25 @@ const Chapter = sequelize.define("Chapter", {
     allowNull: false,
     comment: '编ID'
   },
+  chapter_text: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    comment: '章标题'
+  },
   compile_id: {
     type: DataTypes.STRING,
     allowNull: false,
     comment: '编ID'
+  },
+  branchCompile_text: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    comment: '分编标题'
+  },
+  compile_text: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    comment: '编标题'
   },
   branchCompile_id: {
     type: DataTypes.STRING,
@@ -25,11 +40,6 @@ const Chapter = sequelize.define("Chapter", {
     type: DataTypes.STRING,
     allowNull: false,
     comment: '用户ID'
-  },
-  text: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    comment: '分编标题'
   }
 },
   {

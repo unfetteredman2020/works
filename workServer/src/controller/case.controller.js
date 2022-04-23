@@ -1,5 +1,5 @@
 const UUID = require('uuid')
-const { addCompileService, getCompileService, addBranchCompileService, getCompileAndBranchCompileService, addChapterServeice, getAllClassificationService, addCaseService, getCaseListService } = require('../service/case.service')
+const { addCompileService, getCompileService, addBranchCompileService, getCompileAndBranchCompileService, addChapterServeice, getAllClassificationService, addCaseService, getCaseListService, delService } = require('../service/case.service')
 class CaseController {
   // 添加编
   async addCompileController(ctx, next) {
@@ -162,6 +162,23 @@ class CaseController {
       ctx.body = {
         code: 200,
         msg: '获取case列表失败',
+        data: error
+      }
+    }
+  }
+  // 删除case案例
+  async delController(ctx, next) {
+    try {
+      const res = await delService(ctx.request.query)
+      ctx.body = {
+        code: 200,
+        msg: '删除case成功',
+        data: res
+      }
+    } catch (error) {
+      ctx.body = {
+        code: 400,
+        msg: '删除case失败',
         data: error
       }
     }

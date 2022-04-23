@@ -13,6 +13,10 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
+          <el-menu-item index="/home" :route="{path: '/home'}">
+            <i class="el-icon-s-home"></i>
+            <span slot="title">返回首页</span>
+          </el-menu-item>
           <el-menu-item index="/addCaseItems/caseList" :route="{path: '/addCaseItems/caseList'}">
             <i class="el-icon-menu"></i>
             <span slot="title">案例列表</span>

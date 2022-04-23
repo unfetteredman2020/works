@@ -53,7 +53,7 @@ class CaseService {
             console.log('-----itm-----', itm)
             let obj = {};
             obj.value = itm.branchCompile_id;
-            obj.label = itm.text
+            obj.label = itm.branchCompile_text
             children.push(obj)
           })
           children.length && (parent.children = children)
@@ -94,7 +94,7 @@ class CaseService {
           // console.log('-----itm-----', itm)
           let obj = {};
           obj.value = itm.branchCompile_id;
-          obj.label = itm.text
+          obj.label = itm.branchCompile_text
           children.push(obj)
           const chapter = await Chapter.findAll({
             where: {
@@ -105,7 +105,7 @@ class CaseService {
           chapter.forEach(it => {
             let obj = {};
             obj.value = it.chapter_id;
-            obj.label = it.text
+            obj.label = it.chapter_text
             lastChild.push(obj)
           })
           lastChild.length && (obj.children = lastChild)
@@ -130,6 +130,12 @@ class CaseService {
         user_id
       }
     })
+  }
+  async delService(params) {
+    return await Case.destroy({
+      where: params,
+      force: true
+    });
   }
 }
 

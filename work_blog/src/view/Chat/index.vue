@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-04-23 14:07:44
+ * @LastEditTime: 2022-04-23 17:46:54
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /work_blog/src/view/Chat/index.vue
+-->
 <template>
   <div class="chatContainer">
     <div class="chatBox">
@@ -19,7 +27,9 @@ export default {
   // 定义属性
   data() {
     return {
-      
+      navList: [
+        {icon: 'el-icon-chat-dot-round', route: ''}
+      ]
     }
   },
   // 计算属性，会监听依赖属性值随之变化

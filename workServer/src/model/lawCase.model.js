@@ -1,36 +1,29 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../db/sequelize");
-// const UUID = require('uuid')
 
 
-
-const BranchCompile = sequelize.define("branchCompile", {
+const LawCase = sequelize.define("LawCase", {
   // 在这里定义模型属性
-  compile_id: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    comment: '编ID'
-  },
-  compile_text: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    comment: '编标题'
-  },
-  branchCompile_id: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    // defaultValue: UUID.v1(),
-    comment: '分编ID'
-  },
   user_id: {
     type: DataTypes.STRING,
     allowNull: false,
     comment: '用户ID'
   },
-  branchCompile_text: {
+  lawCase_id: {
+    type: DataTypes.STRING,
+    // defaultValue: UUID.v1(),
+    allowNull: false,
+    comment: 'lawCaseID'
+  },
+  title: {
     type: DataTypes.STRING,
     allowNull: false,
-    comment: '分编标题'
+    comment: '标题'
+  },
+  content: {
+    type: DataTypes.TEXT('long'),
+    allowNull: false,
+    comment: '章内容'
   }
 },
   {
@@ -41,8 +34,9 @@ const BranchCompile = sequelize.define("branchCompile", {
 );
 
   // (async () => {
-  //   await BranchCompile.sync({ force: true });
+  //   await LawCase.sync({ force: true });
   //   // 这里是代码
   // })();
 
-  module.exports = BranchCompile
+module.exports = LawCase
+

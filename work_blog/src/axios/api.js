@@ -45,3 +45,16 @@ export const addCase = params => request.post('/case/addCase', params)
 
 // 获取case列表
 export const getCaseList = user_id => request.get('/case/getCaseList?user_id=' + user_id)
+
+// 删除case
+export const delCase = (user_id, case_id) => request.get(`/case/del?case_id=${case_id}&user_id=${user_id}`)
+
+// 添加law 案例
+export const addLawCase = params => request.post('/lawCase/add', params)
+
+// 
+export const getLawCase = (user_id) => request.get(`/lawCase?user_id=${user_id}`)
+
+
+// 
+export const getLawCaseDetail = (lawCase_id) => request.get(`/lawCase/detail?lawCase_id=${lawCase_id}`)
